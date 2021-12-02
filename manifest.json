@@ -1,0 +1,31 @@
+{
+    "name": "Twitter from Article",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "Search Twitter for keywords from current page article.",
+    "homepage_url": "https://twitter.com",
+    "browser_action": {
+      "default_title": "Twitter from Article",
+      "default_popup": "popup.html"
+    },
+    "background": {
+      "scripts": [
+        "js/lib/jquery.min.js",
+        "js/lib/oAuth.js",
+        "js/lib/sha1.js",
+        "js/lib/twitter.js",
+        "js/background.js"
+      ],
+      "persistent": false
+    },
+    "permissions": [
+      "tabs",
+      "storage",
+      "https://api.twitter.com/*"
+    ],
+    "content_security_policy": "script-src 'self'; object-src 'self'",
+    "content_scripts": [{
+      "matches": ["https://twitter.com/*"],
+      "js": ["js/session.js"]
+    }]
+  }
